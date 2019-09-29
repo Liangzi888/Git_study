@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>生成三组随机数</title>
+</head>
+<body>
+    <!--生成三个输入框-->
+    第1个:<input type="text" id="r1"><br>
+    第2个:<input type="text" id="r2"><br>
+    第3个:<input type="text" id="r3"><br>
+    <!--生成两个按钮-->
+    <button type="button" id="startTimer">启动</button>
+    <button type="button" id="stopTimer">停止</button>
+</body>
+<script>
+    //三个定时器变量
+    var interval;
+    var interva2;
+    var interva3;
+    document.getElementById("startTimer").addEventListener("click",function () {
+        //清除三个定时器，避免 随机数加速现象
+        clearInterval(interval)
+        clearInterval(interva2)
+        clearInterval(interva3)
+        // 调用第一个随机数方法
+        interval = setInterval(function () {
+            random1()
+        },50);
+        // 调用第二个随机数方法
+        interva2 = setInterval(function () {
+            random2()
+        },60);
+        // 调用第三个随机数方法
+        interva3 = setInterval(function () {
+            random3()
+        },70);
+    });
+    document.getElementById("stopTimer").addEventListener("click",function () {
+        //清除三个定时器，停止
+        clearInterval(interval)
+        clearInterval(interva2)
+        clearInterval(interva3)
+    });
+    //定义三个方法，产生随机数，给输入框赋值
+    function random1() {
+       document.getElementById("r1").value = Math.random();
+    }
+    function random2() {
+        document.getElementById("r2").value = Math.random();
+    }
+    function random3() {
+        document.getElementById("r3").value = Math.random();
+    }
+</script>
+</html>
